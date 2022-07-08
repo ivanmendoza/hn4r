@@ -1,0 +1,13 @@
+/* TEAM */
+	Developer:Iván E. Mendoza
+	Contact: hello [at] ivanmendoza.net
+	Fediverse: @balamaqab@mastodon.social
+	From:Guatemala, Guatemala
+
+/* THANKS */
+	Recruiter: Veronica Solovieva
+
+/* SITE */
+	Last update:2022/07/08
+	Language: English
+	IDE: VSCodium
