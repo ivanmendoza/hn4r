@@ -1,0 +1,9 @@
+:root {
+  --hn-primary: #fff;
+  --hn-dark: #333;
+  --hn-light: #fcfcfc;
+}
+
+body {
+  background: var(--hn-light);
+}

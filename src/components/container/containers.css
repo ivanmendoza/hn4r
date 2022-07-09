@@ -1,0 +1,24 @@
+.hn-container {
+  width: calc(100% - 2rem);
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hn-spacer {
+  display: flex;
+  justify-content: center;
+  margin: 72px auto 64px;
+}
+
+@media screen and (min-width: 1280px) {
+  .hn-container {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1921px) {
+  .hn-container {
+    max-width: 1600px;
+  }
+}

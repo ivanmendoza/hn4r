@@ -1,0 +1,37 @@
+.hn-icon {
+  --hn-icon-size: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  width: var(--hn-icon-size);
+  height: var(--hn-icon-size);
+  background: url('icons.png') no-repeat 0 0;
+  background-size: auto 100%;
+}
+
+.hn-icon-size-12 {
+  --hn-icon-size: 12px;
+}
+.hn-icon-size-16 {
+  --hn-icon-size: 16px;
+}
+.hn-icon-size-24 {
+  --hn-icon-size: 24px;
+}
+.hn-icon-size-32 {
+  --hn-icon-size: 32px;
+}
+.hn-icon-size-48 {
+  --hn-icon-size: 48px;
+}
+.hn-icon-size-64 {
+  --hn-icon-size: 64px;
+}
+.hn-icon-size-72 {
+  --hn-icon-size: 72px;
+}
+.hn-icon-size-96 {
+  --hn-icon-size: 96px;
+}
+.hn-icon-size-128 {
+  --hn-icon-size: 128px;
+}

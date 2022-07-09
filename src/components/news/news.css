@@ -1,0 +1,26 @@
+.hn-news {
+  margin: 64px 0;
+  /* padding: 1rem; */
+}
+
+.hn-news-content {
+  padding: 2rem 0;
+  display: grid;
+  gap: 2rem 2rem;
+  grid-template-columns: auto;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1920px) {
+  .hn-news-content {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media screen and (min-width: 1921px) {
+  .hn-news {
+    padding: inherit;
+  }
+  .hn-news-content {
+    grid-template-columns: auto auto auto;
+  }
+}

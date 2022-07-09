@@ -1,0 +1,7 @@
+
+ .hn-icon-clock {background-position:calc(-1*var(--hn-icon-size)*0) 0;} 
+ .hn-icon-favorite-off {background-position:calc(-1*var(--hn-icon-size)*1) 0;} 
+ .hn-icon-favorite-on {background-position:calc(-1*var(--hn-icon-size)*2) 0;} 
+ .hn-icon-logo-angular {background-position:calc(-1*var(--hn-icon-size)*3) 0;} 
+ .hn-icon-logo-react {background-position:calc(-1*var(--hn-icon-size)*4) 0;} 
+ .hn-icon-logo-vuejs {background-position:calc(-1*var(--hn-icon-size)*5) 0;}

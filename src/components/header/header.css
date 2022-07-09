@@ -1,0 +1,29 @@
+.hn-header {
+  --hn-header-bg-start: #ececec;
+  --hn-header-bg-end: #fff;
+  --hn-header-shadow-rgb: 0, 21, 41;
+  width: 100%;
+  box-shadow: 0 1px 4px 0 rgba(var(--hn-header-shadow-rgb), 0.12);
+  background-image: linear-gradient(to bottom, var(--hn-header-bg-start) -32%, var(--hn-header-bg-end) 124%);
+}
+
+.hn-header-content {
+  display: flex;
+  min-height: 114px;
+  width: 100%;
+  justify-content: center;
+}
+
+.hn-header-logo {
+  align-self: center;
+  height: 28px;
+  width: 290px;
+  object-fit: contain;
+  margin-top: 4px;
+}
+
+@media screen and (min-width: 1440px) {
+  .hn-header-content {
+    justify-content: flex-start;
+  }
+}

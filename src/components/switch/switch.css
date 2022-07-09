@@ -1,0 +1,41 @@
+.hn-switch {
+  --hn-switch-option-text: #606060;
+  --hn-switch-option-border-color: #d6d6d6;
+  --hn-switch-option-active-text: #1797ff;
+  --hn-switch-option-active-border-color: var(--hn-switch-option-active-text);
+  --hn-switch-option-size: 8px;
+  --hn-switch-option-border-radius: 3px;
+  --hn-switch-option-max-width: 98px;
+  --hn-switch-option-border-size: 1px;
+  --hn-switch-option-transition-speed: 750ms;
+}
+
+.hn-switch-option {
+  display: inline-block;
+  min-width: var(--hn-switch-option-max-width);
+  text-align: center;
+  border: solid var(--hn-switch-option-border-size) var(--hn-switch-option-border-color);
+  border-left-color: transparent;
+  padding: var(--hn-switch-option-size);
+  text-decoration: none;
+  color: var(--hn-switch-option-text);
+  transition: border var(--hn-switch-option-transition-speed),
+    color calc(var(--hn-switch-option-transition-speed) * 0.5);
+}
+
+.hn-switch-option:first-child {
+  border-left-color: var(--hn-switch-option-border-color);
+  border-top-left-radius: var(--hn-switch-option-border-radius);
+  border-bottom-left-radius: var(--hn-switch-option-border-radius);
+}
+
+.hn-switch-option:last-child {
+  border-top-right-radius: var(--hn-switch-option-border-radius);
+  border-bottom-right-radius: var(--hn-switch-option-border-radius);
+}
+
+.hn-switch-option.active {
+  border-color: var(--hn-switch-option-active-border-color);
+  color: var(--hn-switch-option-active-text);
+  font-weight: 500;
+}
