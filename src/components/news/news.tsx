@@ -1,24 +1,30 @@
-import useFetchContent, { useFetchFakeContent } from '../../hooks/use-fetch-content';
-import TopicSelector from '../topicSelector';
 import { SchemaHackerNewsHitItem, SchemaHackerNewsResponse } from '../../schemas/hacker-news';
-import Pagination from './pagination';
+import useFetchContent from '../../hooks/use-fetch-content';
+import { useConfigManager, useFavManager } from '../../hooks/use-storage-managers';
+import TopicSelector from '../topicSelector';
+// import Pagination from './pagination';
 import NewsItem from './news-Item';
 import { useState } from 'react';
 
 import './news.css';
-import useFavManager from '../../hooks/use-fav-manager';
 
 type NewsProps = {
   className?: string;
   infiniteScroll?: boolean;
 };
 
-const topics = [
+type Topic = {
+  label: string;
+  value: string;
+  icon?: string | null;
+  selected?: boolean;
+};
+
+const topics: Array<Topic> = [
   {
     label: 'Angular',
     value: 'angular',
     icon: null,
-    selected: true,
   },
   {
     label: 'Reactjs',
@@ -33,13 +39,16 @@ const topics = [
 ];
 
 const News: React.FC<NewsProps> = ({ className, infiniteScroll }) => {
-  const [page, setPage] = useState(1);
-  const [topic, setTopic] = useState(topics.filter((topic: any) => topic.selected === true)[0]);
+  const { get: readConfig, update: updateConfig } = useConfigManager();
+  const configTopic = readConfig('topic');
+  const savedTopic = configTopic.length > 0 ? configTopic[0].value : topics[0].value;
+  const [topic, setTopic] = useState(savedTopic);
+  const [page] = useState(1);
 
-  const { content, isLoading, isError } = useFetchFakeContent({
+  const { content, isLoading, isError } = useFetchContent({
     endpoint: `search_by_date`,
     query: {
-      query: topic.value,
+      query: topic,
       page: page,
     },
   });
@@ -59,20 +68,22 @@ const News: React.FC<NewsProps> = ({ className, infiniteScroll }) => {
       <div className="hn-news-header">
         <TopicSelector
           options={topics}
-          onSelect={(itemSelected: any) => {
-            setTopic(itemSelected);
+          defaultValue={topic}
+          onSelect={({ value }: any) => {
+            updateConfig({ option: 'topic' }, { option: 'topic', value: value });
+            setTopic(value);
           }}
         />
-
-        <div className="hn-news-content ">
-          {news.hits &&
-            news.hits.map((newsItem) => <NewsItem key={newsItem.objectID} {...newsItem} favHandler={useFavManager} />)}
-        </div>
-
-        {/* <div className="hn-news-footer">
-          {news.nbPages && <Pagination current={news.page} total={news.nbPages} onChange={setPage} />}
-        </div> */}
       </div>
+
+      <div className="hn-news-content ">
+        {news.hits &&
+          news.hits.map((newsItem) => <NewsItem key={newsItem.objectID} {...newsItem} favHandler={useFavManager} />)}
+      </div>
+
+      {/* <div className="hn-news-footer">
+            {news.nbPages && <Pagination current={news.page} total={news.nbPages} onChange={setPage} />}
+          </div> */}
     </div>
   );
 };

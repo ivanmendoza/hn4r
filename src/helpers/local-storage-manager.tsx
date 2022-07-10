@@ -41,10 +41,14 @@ class LocalStorageDB {
     let results: Array<any> = [];
     ids.forEach((id) => {
       let idResults = db?.filter((item: any) => item[this._key_field] === id);
-      results.concat(idResults);
+      results = results.concat(idResults);
     });
 
     return results;
+  }
+
+  public getAll() {
+    return this.loadDb();
   }
 
   public exists(id: string, db?: Array<any>) {
@@ -97,17 +101,18 @@ class LocalStorageDB {
     }
   }
 
-  public update(id: string, newItem: any) {
+  public update(oldItem: any, newItem: any) {
     try {
       let db = this.loadDb();
-      let index = db.findIndex((item: any) => item[this._key_field] === id);
+      let index = db.findIndex((item: any) => item[this._key_field] === oldItem[this._key_field]);
 
       if (index > -1) {
         db[index] = newItem;
         localStorage.setItem(this._name, JSON.stringify(db));
         return true;
       }
-      return false;
+
+      return this.add(newItem);
     } catch (err) {
       console.error(err);
       return false;

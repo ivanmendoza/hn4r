@@ -14,8 +14,17 @@ function App() {
       <BrowserRouter>
         <Header logo="/images/hacker-news-logo.png" logo_alt="Hacker News" />
         <Container>
+          <Spacer>
+            <Switch
+              options={[
+                { label: 'All', href: '/', selected: true },
+                { label: 'My faves', href: '/favs' },
+              ]}
+            />
+          </Spacer>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/favs" element={<FavsPage />} />
           </Routes>
         </Container>
       </BrowserRouter>

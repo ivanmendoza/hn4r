@@ -11,7 +11,7 @@ type NewsItemProps = SchemaHackerNewsHitItem & {
   favHandler?: any;
 };
 const NewsItem: React.FC<NewsItemProps> = ({ className, story_title, story_url, created_at, author, favHandler }) => {
-  const { is: isFav, create: saveFav, del: removeFav } = favHandler();
+  const { exists: isFav, add: saveFav, remove: removeFav } = favHandler();
   const [fav, setFav] = useState(isFav(story_url));
   const relativeDate = moment(created_at).fromNow();
 

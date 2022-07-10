@@ -1,8 +1,8 @@
-.hn-news {
+.hn-favs {
   margin: 32px 0;
 }
 
-.hn-news-content {
+.hn-favs-content {
   padding: 2rem 0;
   display: grid;
   gap: 2rem 2rem;
@@ -10,22 +10,22 @@
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1920px) {
-  .hn-news-content {
+  .hn-favs-content {
     grid-template-columns: 50% 50%;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .hn-news {
+  .hn-favs {
     margin: 64px 0;
   }
 }
 
 @media screen and (min-width: 1921px) {
-  .hn-news {
+  .hn-favs {
     padding: inherit;
   }
-  .hn-news-content {
+  .hn-favs-content {
     grid-template-columns: 33.3% 33.3% 33.3%;
   }
 }

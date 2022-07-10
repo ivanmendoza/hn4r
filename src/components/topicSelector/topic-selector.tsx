@@ -3,11 +3,14 @@ import { useState } from 'react';
 type TopicSelectorProps = {
   className?: string;
   options: Array<any>;
+  defaultValue?: string;
   onSelect?: Function;
 };
 
-const TopicSelector: React.FC<TopicSelectorProps> = ({ className, options, onSelect }) => {
-  const [selected, setSelected] = useState(options.filter((option: any) => option.selected === true)[0]);
+const TopicSelector: React.FC<TopicSelectorProps> = ({ className, options, onSelect, defaultValue }) => {
+  const defaultOption = options.filter((option: any) => option.value === defaultValue)[0];
+  const [selected, setSelected] = useState(defaultOption ? defaultOption : options[0]);
+
   return (
     <div className={`hn-topic-selector ${className}`}>
       <select
