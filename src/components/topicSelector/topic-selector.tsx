@@ -1,8 +1,15 @@
 import { useState } from 'react';
 
+type Topic = {
+  label: string;
+  value: string;
+  icon?: string | null;
+  selected?: boolean;
+};
+
 type TopicSelectorProps = {
   className?: string;
-  options: Array<any>;
+  options: Array<Topic>;
   defaultValue?: string;
   onSelect?: Function;
 };
@@ -36,4 +43,5 @@ const TopicSelector: React.FC<TopicSelectorProps> = ({ className, options, onSel
   );
 };
 
-export default TopicSelector;
+export { TopicSelector as default };
+export type { Topic };

@@ -4,8 +4,9 @@ type PaginationProps = {
   total: number;
   onChange?: Function;
 };
-const Pagination: React.FC<PaginationProps> = ({ className, current, total }) => (
-  <div className={`hn-pagination ${className}`}>{`<- Pagination here: ${current} of ${total} ->`}</div>
-);
+
+const Pagination: React.FC<PaginationProps> = ({ className, current, total }) => {
+  return <div className={`hn-pagination ${className}`}>{`<- Pagination here: ${current} of ${total} ->`}</div>;
+};
 
 export default Pagination;

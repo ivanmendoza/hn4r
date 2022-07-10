@@ -1,5 +1,5 @@
 type SchemaHackerNewsResponse = {
-  hits?: Array<SchemaHackerNewsHitItem>;
+  hits: Array<SchemaHackerNewsHitItem>;
   nbHits?: number;
   page?: number;
   nbPages?: number;

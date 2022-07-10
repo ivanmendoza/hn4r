@@ -1,89 +1,66 @@
-import { SchemaHackerNewsHitItem, SchemaHackerNewsResponse } from '../../schemas/hacker-news';
-import useFetchContent from '../../hooks/use-fetch-content';
-import { useConfigManager, useFavManager } from '../../hooks/use-storage-managers';
-import TopicSelector from '../topicSelector';
-// import Pagination from './pagination';
-import NewsItem from './news-Item';
-import { useState } from 'react';
+import { SchemaHackerNewsResponse } from '../../schemas/hacker-news';
+import { useFetchInfiniteContent } from '../../hooks/use-fetch-content';
+import { useEffect, useRef, useState } from 'react';
+import useOnScreen from '../../hooks/useOnScreen';
+import NewsPage from './news-page';
+import NewsMessage from './news-message';
 
 import './news.css';
 
 type NewsProps = {
   className?: string;
-  infiniteScroll?: boolean;
+  topic: string;
 };
 
-type Topic = {
-  label: string;
-  value: string;
-  icon?: string | null;
-  selected?: boolean;
-};
+const News: React.FC<NewsProps> = ({ topic, className }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isVisible = useOnScreen(ref);
+  const [totalPages, setTotalPages] = useState(10);
 
-const topics: Array<Topic> = [
-  {
-    label: 'Angular',
-    value: 'angular',
-    icon: null,
-  },
-  {
-    label: 'Reactjs',
-    value: 'reactjs',
-    icon: null,
-  },
-  {
-    label: 'Vuejs',
-    value: 'vuejs',
-    icon: null,
-  },
-];
-
-const News: React.FC<NewsProps> = ({ className, infiniteScroll }) => {
-  const { get: readConfig, update: updateConfig } = useConfigManager();
-  const configTopic = readConfig('topic');
-  const savedTopic = configTopic.length > 0 ? configTopic[0].value : topics[0].value;
-  const [topic, setTopic] = useState(savedTopic);
-  const [page] = useState(1);
-
-  const { content, isLoading, isError } = useFetchContent({
+  const { content, isLoading, isLoadingMore, isError, size, setSize, isFetching } = useFetchInfiniteContent({
     endpoint: `search_by_date`,
     query: {
       query: topic,
-      page: page,
     },
   });
 
-  if (isError) return <>Error inesperado...</>;
-  if (isLoading) return <>Cargando...</>;
+  const isEnd = size === totalPages;
 
-  const news = content as SchemaHackerNewsResponse;
+  useEffect(() => {
+    if (isVisible && !isEnd && !isFetching) {
+      if (content && content[0].nbPages && totalPages !== content[0].nbPages) {
+        setTotalPages(content[0].nbPages);
+      }
+      setSize(size + 1);
+    }
+  }, [isVisible, isFetching]);
 
-  // Cleaning up stories without essential information
-  news.hits = news.hits?.filter(
-    (hit: SchemaHackerNewsHitItem) => hit.created_at && hit.story_title && hit.story_url && hit.author
-  );
+  const newsPages = content ? (content as Array<SchemaHackerNewsResponse>) : ([] as Array<SchemaHackerNewsResponse>);
 
   return (
     <div className="hn-news">
-      <div className="hn-news-header">
-        <TopicSelector
-          options={topics}
-          defaultValue={topic}
-          onSelect={({ value }: any) => {
-            updateConfig({ option: 'topic' }, { option: 'topic', value: value });
-            setTopic(value);
-          }}
-        />
-      </div>
-
+      {!isLoading && !isLoadingMore && newsPages.length <= 0 && (
+        <NewsMessage type="empty">
+          Sorry, no content available. <br />
+          Try again later.
+        </NewsMessage>
+      )}
       <div className="hn-news-content ">
-        {news.hits &&
-          news.hits.map((newsItem) => <NewsItem key={newsItem.objectID} {...newsItem} favHandler={useFavManager} />)}
+        {newsPages.length > 0 && newsPages.map((page, index) => <NewsPage key={`page-${index}`} news={page} />)}
       </div>
-
-      {/* <div className="hn-news-footer">
-            {news.nbPages && <Pagination current={news.page} total={news.nbPages} onChange={setPage} />}
-          </div> */}
+      <div ref={ref} className="hn-news-footer">
+        {(isFetching || isLoading || isLoadingMore) && (
+          <NewsMessage type="loading">🕜️ Loading more, please wait...</NewsMessage>
+        )}
+        {isEnd && (
+          <NewsMessage type="info">
+            🥳 <strong>Well done! </strong>
+            <br />
+            There's no more stories to read. <br />
+            Come back later for more.
+          </NewsMessage>
+        )}
+      </div>
     </div>
   );
 };

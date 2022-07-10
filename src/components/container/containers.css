@@ -5,10 +5,16 @@
   margin-right: auto;
 }
 
-.hn-spacer {
+.hn-spacer.hn-spacer-filters {
   display: flex;
   justify-content: center;
   margin: 30px auto;
+}
+
+.hn-spacer.hn-spacer-toolbar {
+  display: flex;
+  margin-top: 3rem;
+  margin-bottom: 0;
 }
 
 @media screen and (min-width: 1280px) {
@@ -16,7 +22,7 @@
     width: 100%;
   }
 
-  .hn-spacer {
+  .hn-spacer.hn-spacer-filters {
     display: flex;
     justify-content: center;
     margin: 72px auto 64px;

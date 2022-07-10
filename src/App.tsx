@@ -14,7 +14,7 @@ function App() {
       <BrowserRouter>
         <Header logo="/images/hacker-news-logo.png" logo_alt="Hacker News" />
         <Container>
-          <Spacer>
+          <Spacer type="filters">
             <Switch
               options={[
                 { label: 'All', href: '/', selected: true },
