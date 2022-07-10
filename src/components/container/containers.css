@@ -8,12 +8,18 @@
 .hn-spacer {
   display: flex;
   justify-content: center;
-  margin: 72px auto 64px;
+  margin: 30px auto;
 }
 
 @media screen and (min-width: 1280px) {
   .hn-container {
     width: 100%;
+  }
+
+  .hn-spacer {
+    display: flex;
+    justify-content: center;
+    margin: 72px auto 64px;
   }
 }
 

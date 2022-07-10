@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { useState } from 'react';
 import { SchemaHackerNewsHitItem } from '../../../schemas/hacker-news';
 import Icon from '../../icon';
 
@@ -10,6 +11,8 @@ type NewsItemProps = SchemaHackerNewsHitItem & {
   favHandler?: any;
 };
 const NewsItem: React.FC<NewsItemProps> = ({ className, story_title, story_url, created_at, author, favHandler }) => {
+  const { is: isFav, create: saveFav, del: removeFav } = favHandler();
+  const [fav, setFav] = useState(isFav(story_url));
   const relativeDate = moment(created_at).fromNow();
 
   return (
@@ -29,8 +32,19 @@ const NewsItem: React.FC<NewsItemProps> = ({ className, story_title, story_url, 
         </div>
       </a>
       {favHandler && (
-        <div className="hn-news-item-status hn-news-item-favorite off">
-          <Icon name="favorite-off" size="24" />
+        <div
+          className="hn-news-item-status hn-news-item-favorite off"
+          onClick={(e) => {
+            let result;
+            if (fav) {
+              result = !removeFav(story_url);
+            } else {
+              result = saveFav({ story_title, story_url, created_at, author });
+            }
+            setFav(result);
+          }}
+        >
+          <Icon name={`favorite-${fav ? 'on' : 'off'}`} size="24" />
         </div>
       )}
     </div>

@@ -1,6 +1,5 @@
 .hn-news {
-  margin: 64px 0;
-  /* padding: 1rem; */
+  margin: 32px 0;
 }
 
 .hn-news-content {
@@ -13,6 +12,12 @@
 @media screen and (min-width: 1024px) and (max-width: 1920px) {
   .hn-news-content {
     grid-template-columns: auto auto;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .hn-news {
+    margin: 64px 0;
   }
 }
 

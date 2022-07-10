@@ -1,4 +1,4 @@
-import useFetchContent from '../../hooks/useFetchContent';
+import useFetchContent, { useFetchFakeContent } from '../../hooks/use-fetch-content';
 import TopicSelector from '../topicSelector';
 import { SchemaHackerNewsHitItem, SchemaHackerNewsResponse } from '../../schemas/hacker-news';
 import Pagination from './pagination';
@@ -6,6 +6,7 @@ import NewsItem from './news-Item';
 import { useState } from 'react';
 
 import './news.css';
+import useFavManager from '../../hooks/use-fav-manager';
 
 type NewsProps = {
   className?: string;
@@ -35,7 +36,7 @@ const News: React.FC<NewsProps> = ({ className, infiniteScroll }) => {
   const [page, setPage] = useState(1);
   const [topic, setTopic] = useState(topics.filter((topic: any) => topic.selected === true)[0]);
 
-  const { content, isLoading, isError } = useFetchContent({
+  const { content, isLoading, isError } = useFetchFakeContent({
     endpoint: `search_by_date`,
     query: {
       query: topic.value,
@@ -64,7 +65,8 @@ const News: React.FC<NewsProps> = ({ className, infiniteScroll }) => {
         />
 
         <div className="hn-news-content ">
-          {news.hits && news.hits.map((newsItem) => <NewsItem key={newsItem.objectID} {...newsItem} />)}
+          {news.hits &&
+            news.hits.map((newsItem) => <NewsItem key={newsItem.objectID} {...newsItem} favHandler={useFavManager} />)}
         </div>
 
         {/* <div className="hn-news-footer">
