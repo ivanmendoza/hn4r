@@ -33,6 +33,7 @@ const News: React.FC<NewsProps> = ({ topic, className }) => {
       }
       setSize(size + 1);
     }
+    // eslint-disable-next-line
   }, [isVisible, isFetching]);
 
   const newsPages = content ? (content as Array<SchemaHackerNewsResponse>) : ([] as Array<SchemaHackerNewsResponse>);
@@ -40,6 +41,12 @@ const News: React.FC<NewsProps> = ({ topic, className }) => {
   return (
     <div className="hn-news">
       {!isLoading && !isLoadingMore && newsPages.length <= 0 && (
+        <NewsMessage type="empty">
+          Sorry, no content available. <br />
+          Try again later.
+        </NewsMessage>
+      )}
+      {isError && (
         <NewsMessage type="empty">
           Sorry, no content available. <br />
           Try again later.

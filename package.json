@@ -1,7 +1,7 @@
 {
   "name": "hn4reign",
   "description": "Hacker News Reader",
-  "version": "0.6.1-timeago-optimization",
+  "version": "0.7.0",
   "author": {
     "name": "Iván E. Mendoza",
     "email": "hello@ivanmendoza.net",
@@ -16,7 +16,6 @@
     "@types/node": "^16.11.43",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
-    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
