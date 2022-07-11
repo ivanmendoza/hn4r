@@ -1,6 +1,10 @@
 
 # HN4Reign - Changelog
 
+
+## v0.6.1 - 2022-07-10
+* 🛠️ Fix: Images for app icons (PWA) moved `public/icons` to match with manifest.json and index.html configuration.  
+
 ## v0.6.0 - 2022-07-10
 * ✨ New: Infinite scroll added to News page. 
 * ✨ New: `NewsPage` and `NewsMessage` components created in order to improve code and styles for `News` component.  
