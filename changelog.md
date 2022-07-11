@@ -1,6 +1,10 @@
 
 # HN4Reign - Changelog
 
+## v0.7.0 - 2022-07-11
+
+* ✨ New: Topic selector built from scratch to match styles with original design.
+* 👨‍💻 Development: MomentJs replaced by s-ago library to reduce weight.
 
 ## v0.6.1 - 2022-07-10
 * 🛠️ Fix: Images for app icons (PWA) moved `public/icons` to match with manifest.json and index.html configuration.  

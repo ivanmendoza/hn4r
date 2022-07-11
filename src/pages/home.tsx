@@ -8,17 +8,17 @@ const topics: Array<Topic> = [
   {
     label: 'Angular',
     value: 'angular',
-    icon: null,
+    icon: 'logo-angular',
   },
   {
     label: 'Reactjs',
     value: 'reactjs',
-    icon: null,
+    icon: 'logo-react',
   },
   {
     label: 'Vuejs',
     value: 'vuejs',
-    icon: null,
+    icon: 'logo-vuejs',
   },
 ];
 

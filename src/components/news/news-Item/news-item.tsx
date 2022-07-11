@@ -1,7 +1,7 @@
-import moment from 'moment';
 import { useState } from 'react';
 import { SchemaHackerNewsHitItem } from '../../../schemas/hacker-news';
 import Icon from '../../icon';
+import ago from 's-ago';
 
 import './news-item.css';
 
@@ -13,7 +13,7 @@ type NewsItemProps = SchemaHackerNewsHitItem & {
 const NewsItem: React.FC<NewsItemProps> = ({ className, story_title, story_url, created_at, author, favHandler }) => {
   const { exists: isFav, add: saveFav, remove: removeFav } = favHandler();
   const [fav, setFav] = useState(isFav(story_url));
-  const relativeDate = moment(created_at).fromNow();
+  const relativeDate = ago(new Date(created_at ? created_at : ''));
 
   return (
     <div className={`hn-news-item ${className ? className : ''}`}>
