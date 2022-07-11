@@ -9,7 +9,7 @@
   justify-content: space-between;
   border: solid 1px #828282;
   border-radius: 4px;
-  width: 240px;
+  width: 144px;
   max-width: 100%;
   padding: 0.5rem 0.75rem;
 }
@@ -63,4 +63,10 @@
 
 .hn-select-list .hn-item-icon {
   margin: 0.75rem;
+}
+
+@media screen and (min-width: 1080px) {
+  .hn-select-box {
+    width: 240px;
+  }
 }
