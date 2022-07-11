@@ -7,14 +7,12 @@
   border: solid 1px #eee;
   border-radius: 4px;
 }
-.hn-news-message.hn-news-message-empty {
-}
-.hn-news-message.hn-news-message-error {
-}
+
 .hn-news-message.hn-news-message-loading {
-  background: linear-gradient(178deg, #ffc 0, #fff 100%);
+  background: linear-gradient(178deg, #ffd 0, #fff 100%);
   border: solid 1px #fea;
 }
+
 .hn-news-message.hn-news-message-info {
   background: linear-gradient(178deg, #e6f6ff 0, #fff 50%);
 }

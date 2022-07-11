@@ -4,6 +4,27 @@
   --hn-light: #fcfcfc;
 }
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('../public/fonts/Roboto-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('../public/fonts/Roboto-Medium.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('../public/fonts/Roboto-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
 body {
+  font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+    'Helvetica Neue', sans-serif;
   background: var(--hn-light);
 }

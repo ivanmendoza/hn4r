@@ -14,6 +14,7 @@ export default function useOnScreen(ref: any | null) {
     return () => {
       observer.disconnect();
     };
+    // eslint-disable-next-line
   }, []);
 
   return isIntersecting;
