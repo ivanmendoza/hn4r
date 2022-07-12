@@ -3,13 +3,14 @@
  */
 
 import { SchemaHackerNewsResponse } from '../../schemas/hacker-news';
-import { useFetchInfiniteContent } from '../../hooks/use-fetch-content';
+import useFetchInfiniteContent from '../../hooks/use-fetch-infinite-content';
 import { useEffect, useRef, useState } from 'react';
 import useOnScreen from '../../hooks/use-on-screen';
 import NewsPage from './news-page';
 import NewsMessage from './news-message';
 
 import './news.css';
+import news from '.';
 
 type NewsProps = {
   className?: string;
@@ -35,29 +36,25 @@ const News: React.FC<NewsProps> = ({ topic, className }) => {
     },
   });
 
+  const newsPages = content ? (content as Array<SchemaHackerNewsResponse>) : ([] as Array<SchemaHackerNewsResponse>);
   const isEnd = size === totalPages;
 
+  if (content && content[0].nbPages && totalPages !== content[0].nbPages) {
+    setTotalPages(content[0].nbPages);
+  }
+
   useEffect(() => {
-    if (isVisible && !isEnd && !isFetching) {
-      if (content && content[0].nbPages && totalPages !== content[0].nbPages) {
-        setTotalPages(content[0].nbPages);
+    if (isVisible && !isEnd && !isFetching && !isLoading && newsPages.length > 0) {
+      if (size + 1 === newsPages.length + 1) {
+        setSize(size + 1);
       }
-      setSize(size + 1);
     }
     // eslint-disable-next-line
-  }, [isVisible, isFetching]);
-
-  const newsPages = content ? (content as Array<SchemaHackerNewsResponse>) : ([] as Array<SchemaHackerNewsResponse>);
+  }, [isVisible]);
 
   return (
     <div className="hn-news">
-      {!isLoading && !isLoadingMore && newsPages.length <= 0 && (
-        <NewsMessage type="empty">
-          Sorry, no content available. <br />
-          Try again later.
-        </NewsMessage>
-      )}
-      {isError && (
+      {(isError || (!isLoading && !isLoadingMore && newsPages.length <= 0)) && (
         <NewsMessage type="empty">
           Sorry, no content available. <br />
           Try again later.
@@ -66,7 +63,8 @@ const News: React.FC<NewsProps> = ({ topic, className }) => {
       <div className="hn-news-content ">
         {newsPages.length > 0 && newsPages.map((page, index) => <NewsPage key={`page-${index}`} news={page} />)}
       </div>
-      <div ref={ref} className="hn-news-footer">
+      <div ref={ref}>&nbsp;</div>
+      <div className="hn-news-footer">
         {(isFetching || isLoading || isLoadingMore) && (
           <NewsMessage type="loading">🕜️ Loading more, please wait...</NewsMessage>
         )}

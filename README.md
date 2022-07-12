@@ -13,8 +13,10 @@ Try it! https://hn4r.netlify.app
 
 ## 👩‍💻 Technical documentation
 
+* [Generators](docs/generators.md) 
 * [Pages](docs/pages.md)
 * [Components](docs/components.md)
+* [Classes](docs/classes.md)
 * [Helpers](docs/helpers.md)
 * [Hooks](docs/hooks.md) 
-* [Generators](docs/generators.md) 
+* [Constants](docs/constants.md)

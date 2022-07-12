@@ -1,6 +1,11 @@
 
 # HN4Reign - Changelog
 
+## v0.7.2 - 2022-07-12
+* 🛠️ Fix: Solved an issue with fetch content from API for the first time, due a UI state while the content is still loading. Now the first load of the page is faster.  
+* 👨‍💻 Development: Documentation for constants and classes created.
+* 👨‍💻 Development: More improvements for code style and structure.
+
 ## v0.7.1 - 2022-07-11
 * ✨ New: [Readme](README.md) file ready. 
 * ✨ New: [Technical documentation](docs/) created. 

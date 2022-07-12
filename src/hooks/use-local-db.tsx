@@ -1,13 +1,13 @@
-import LocalStorageDB from '../helpers/local-storage-manager';
+import LocalStorageDB from '../classes/local-storage-manager';
 
-/**
+function /**
  * React hook as a wrapper for `LocalStorageDB` methods. Returns the following methods: `get`, `getAll`, `add`, `remove`, `clear`, `update` and `exists`.
  * @kind hook
  * @param {string} - Database name.
  * @param {string} - Key field to uses as ID.
  * @returns {object}
  */
-function useLocalDb(database: string, keyField: string) {
+useLocalDb(database: string, keyField: string) {
   const db = new LocalStorageDB(database, keyField);
 
   return {

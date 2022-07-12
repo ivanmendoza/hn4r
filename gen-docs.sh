@@ -14,4 +14,7 @@ for folder in ${FOLDERS[@]}; do
     jsdoc2md --files "$SOURCE_PATH$folder_name/**/*.tsx" --configure jsdoc2md.json >./docs/$folder_name.md
 done
 
+echo "Getting documentation for Constants..."
+jsdoc2md --files "$SOURCE_PATH/constants.tsx" --configure jsdoc2md.json >./docs/constants.md
+
 echo ""
