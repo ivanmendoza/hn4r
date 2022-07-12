@@ -10,7 +10,6 @@ import NewsPage from './news-page';
 import NewsMessage from './news-message';
 
 import './news.css';
-import news from '.';
 
 type NewsProps = {
   className?: string;

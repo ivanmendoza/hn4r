@@ -39,7 +39,7 @@ const TopicSelector: React.FC<TopicSelectorProps> = ({ className, options, onSel
       <div className="hn-select-box" onClick={() => setListVisible(!listVisible)}>
         <div className="hn-item">
           {selected.icon && <Icon className="hn-item-icon" name={selected.icon} size="16" />}
-          {selected.label}
+          <span className="hn-item-label">{selected.label}</span>
         </div>
         <div className="hn-dropdown">
           <Icon className="hn-icon-dropdown" name="dropdown" size="16" />
@@ -64,7 +64,7 @@ const TopicSelector: React.FC<TopicSelectorProps> = ({ className, options, onSel
                   }}
                 >
                   {icon && <Icon className="hn-item-icon" name={icon} size="24" />}
-                  {label}
+                  <span className="hn-item-label">{label}</span>
                 </div>
               );
             })}

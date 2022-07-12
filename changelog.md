@@ -1,6 +1,9 @@
 
 # HN4Reign - Changelog
 
+## v0.7.4 - 2022-07-12
+* 👩‍💻 Development: Unit tests added for Switch and TopicSelectorComponent. 
+* 🔧 Improvement: TopicSelector's item labels wrapped by html elements to better target for styles and unit testing.
 
 ## v0.7.3 - 2022-07-12
 * 🔧 Improvement: font-display configuration added to fonts to improve the UX while loading the page.
