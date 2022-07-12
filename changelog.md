@@ -1,6 +1,10 @@
 
 # HN4Reign - Changelog
 
+
+## v0.7.3 - 2022-07-12
+* 🔧 Improvement: font-display configuration added to fonts to improve the UX while loading the page.
+
 ## v0.7.2 - 2022-07-12
 * 🛠️ Fix: Solved an issue with fetch content from API for the first time, due a UI state while the content is still loading. Now the first load of the page is faster.  
 * 👨‍💻 Development: Documentation for constants and classes created.
