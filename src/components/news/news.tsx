@@ -1,7 +1,11 @@
+/**
+ * @module News
+ */
+
 import { SchemaHackerNewsResponse } from '../../schemas/hacker-news';
 import { useFetchInfiniteContent } from '../../hooks/use-fetch-content';
 import { useEffect, useRef, useState } from 'react';
-import useOnScreen from '../../hooks/useOnScreen';
+import useOnScreen from '../../hooks/use-on-screen';
 import NewsPage from './news-page';
 import NewsMessage from './news-message';
 
@@ -12,6 +16,13 @@ type NewsProps = {
   topic: string;
 };
 
+/**
+ * Hacker news grid
+ * @kind component
+ * @prop {string} - className
+ * @prop {string} - topic
+ * @returns {React.FC}
+ */
 const News: React.FC<NewsProps> = ({ topic, className }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isVisible = useOnScreen(ref);

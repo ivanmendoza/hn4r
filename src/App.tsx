@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { FavsPage } from './pages/favs';
 import { HomePage } from './pages/home';
 import Header from './components/header';
 import { Container, Spacer } from './components/container';
 import Switch from './components/switch';
 
 import './App.css';
+import Favs from './components/favs';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
           </Spacer>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/favs" element={<FavsPage />} />
+            <Route path="/favs" element={<Favs />} />
           </Routes>
         </Container>
       </BrowserRouter>

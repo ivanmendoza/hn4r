@@ -1,6 +1,9 @@
+/**
+ * @module TopicSelector
+ */
+
 import { useState } from 'react';
 import Icon from '../icon';
-
 import './topic-selector.css';
 
 type Topic = {
@@ -17,6 +20,15 @@ type TopicSelectorProps = {
   onSelect?: Function;
 };
 
+/**
+ * Custom dropdown list. Support custom icons.
+ * @kind component
+ * @prop {string} - className
+ * @prop {string} - defaultValue
+ * @prop {Array<Topic>} - options
+ * @prop {Function} - onSelect
+ * @returns {React.FC}
+ */
 const TopicSelector: React.FC<TopicSelectorProps> = ({ className, options, onSelect, defaultValue }) => {
   const defaultOption = options.filter((option: any) => option.value === defaultValue)[0];
   const [selected, setSelected] = useState(defaultOption ? defaultOption : options[0]);
@@ -26,7 +38,7 @@ const TopicSelector: React.FC<TopicSelectorProps> = ({ className, options, onSel
     <div className={`hn-select ${className ? className : ''}  ${listVisible ? 'hn-select-open' : ''}`}>
       <div className="hn-select-box" onClick={() => setListVisible(!listVisible)}>
         <div className="hn-item">
-          <Icon className="hn-item-icon" name={selected.icon ? selected.icon : ''} size="16" />
+          {selected.icon && <Icon className="hn-item-icon" name={selected.icon} size="16" />}
           {selected.label}
         </div>
         <div className="hn-dropdown">
@@ -51,7 +63,7 @@ const TopicSelector: React.FC<TopicSelectorProps> = ({ className, options, onSel
                     setListVisible(false);
                   }}
                 >
-                  <Icon className="hn-item-icon" name={icon} size="24" />
+                  {icon && <Icon className="hn-item-icon" name={icon} size="24" />}
                   {label}
                 </div>
               );

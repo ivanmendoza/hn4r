@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react';
 
-// Code by ramyarey (https://github.com/ramyareye)
-// https://github.com/vercel/swr/blob/main/examples/infinite-scroll/hooks/useOnScreen.js
+/**
+ * React hook to "spy" an HTML element and detects when appears on screen.
+ * @kind hook
+ * @author [ramyarey]{@link https://github.com/ramyareye} at [SWR examples]{@link https://github.com/vercel/swr/blob/main/examples/infinite-scroll/hooks/useOnScreen.js}
+ * @licence mit
+ * @param {any | null} - HTML Element Ref
+ * @returns {object}
+ */
 export default function useOnScreen(ref: any | null) {
   const [isIntersecting, setIntersecting] = useState(false);
 

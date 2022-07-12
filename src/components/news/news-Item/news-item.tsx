@@ -1,15 +1,25 @@
+/**
+ * @module NewsItem
+ */
+
 import { useState } from 'react';
 import { SchemaHackerNewsHitItem } from '../../../schemas/hacker-news';
 import Icon from '../../icon';
 import ago from 's-ago';
-
 import './news-item.css';
 
 type NewsItemProps = SchemaHackerNewsHitItem & {
   className?: string;
-  favorite?: boolean;
   favHandler?: any;
 };
+
+/**
+ * NewsItem render all the style and logic for a Hacker News Story
+ * @kind component
+ * @prop {string} - className
+ * @prop {*} favHandler, to handle all the actions when Favorite icon is pressed.
+ * @returns {React.FC}
+ */
 const NewsItem: React.FC<NewsItemProps> = ({ className, story_title, story_url, created_at, author, favHandler }) => {
   const { exists: isFav, add: saveFav, remove: removeFav } = favHandler();
   const [fav, setFav] = useState(isFav(story_url));

@@ -1,3 +1,11 @@
+/**
+ * @module Schemas
+ */
+
+/**
+ * Hacker News Response Schema
+ * @kind typedef
+ */
 type SchemaHackerNewsResponse = {
   hits: Array<SchemaHackerNewsHitItem>;
   nbHits?: number;
@@ -11,6 +19,10 @@ type SchemaHackerNewsResponse = {
   processingTimeMS?: number;
 };
 
+/**
+ * Hacker News Hit Item Schema
+ * @kind typedef
+ */
 type SchemaHackerNewsHitItem = {
   created_at?: string;
   title?: string;
@@ -35,6 +47,10 @@ type SchemaHackerNewsHitItem = {
   };
 };
 
+/**
+ * Hacker News Hit Highlight Result Schema
+ * @kind typedef
+ */
 type SchemaHackerNewsHighlightResult = {
   value?: string;
   matchLevel?: string;

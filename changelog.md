@@ -1,6 +1,12 @@
 
 # HN4Reign - Changelog
 
+## v0.7.1 - 2022-07-11
+* ✨ New: [Readme](README.md) file ready. 
+* ✨ New: [Technical documentation](docs/) created. 
+* 👨‍💻 Development: Clean and better organized code.
+* 👨‍💻 Development: Useless code removed.
+
 ## v0.7.0 - 2022-07-11
 
 * ✨ New: Topic selector built from scratch to match styles with original design.

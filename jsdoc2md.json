@@ -1,0 +1,15 @@
+{
+  "source": {
+    "includePattern": ".+\\.ts(doc|x)?$",
+    "excludePattern": ".+\\.(test|spec).ts"
+  },
+  "sourceType": "module",
+  "plugins": ["plugins/markdown", "node_modules/jsdoc-babel"],
+  "babel": {
+    "extensions": ["tsx"],
+    "ignore": ["**/*.(test|spec).tsx"],
+    "babelrc": false,
+    "presets": [["@babel/preset-env", { "targets": { "node": true } }], "@babel/preset-typescript"],
+    "plugins": ["@babel/proposal-class-properties", "@babel/proposal-object-rest-spread"]
+  }
+}

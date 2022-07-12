@@ -1,37 +1,26 @@
 import { useState } from 'react';
 import { Spacer } from '../components/container';
 import News from '../components/news';
-import TopicSelector, { Topic } from '../components/topicSelector';
+import TopicSelector from '../components/topicSelector';
+import { DEFAULT_TOPICS } from '../constants';
 import { useConfigManager } from '../hooks/use-storage-managers';
 
-const topics: Array<Topic> = [
-  {
-    label: 'Angular',
-    value: 'angular',
-    icon: 'logo-angular',
-  },
-  {
-    label: 'Reactjs',
-    value: 'reactjs',
-    icon: 'logo-react',
-  },
-  {
-    label: 'Vuejs',
-    value: 'vuejs',
-    icon: 'logo-vuejs',
-  },
-];
+/** @module HomePage */
 
-export const HomePage: React.FC = () => {
+/**
+ * Home page component. Handles the integration between `TopicSelector` and `News` components.
+ * @kind component
+ */
+const HomePage: React.FC = () => {
   const { get: readConfig, update: updateConfig } = useConfigManager();
   const configTopic = readConfig('topic');
-  const savedTopic = configTopic.length > 0 ? configTopic[0].value : topics[0].value;
+  const savedTopic = configTopic.length > 0 ? configTopic[0].value : DEFAULT_TOPICS[0].value;
   const [topic, setTopic] = useState(savedTopic);
   return (
     <>
       <Spacer type="toolbar">
         <TopicSelector
-          options={topics}
+          options={DEFAULT_TOPICS}
           defaultValue={topic}
           onSelect={({ value }: any) => {
             updateConfig({ option: 'topic' }, { option: 'topic', value: value });
@@ -43,3 +32,5 @@ export const HomePage: React.FC = () => {
     </>
   );
 };
+
+export { HomePage };

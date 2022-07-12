@@ -1,8 +1,16 @@
+/**
+ * @module Favs
+ */
+
 import { useFavManager } from '../../hooks/use-storage-managers';
 import NewsItem from '../news/news-Item';
-
 import './favs.css';
 
+/**
+ * Favs component to show all the stories marked as Favorites
+ * @kind component
+ * @returns {React.FC}
+ */
 const Favs: React.FC = () => {
   const { getAll: getFavs } = useFavManager();
   const news = getFavs();
