@@ -2,6 +2,8 @@
 
 Hacker News Reader for web developer. Check the latests news about Angular, ReactJS and VueJS from your favorite device. 
 
+Try it! https://hn4r.netlify.app
+
 ## ✨ Features
 * Save your favorite stories.
 * Fast to load and easy to use.
